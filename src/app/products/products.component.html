@@ -1,1 +1,33 @@
-<p>products works!</p>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Precio</th>
+      <th>Categoría</th>
+      <th>Descripción</th>
+      <th>Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos">
+      <td>{{ producto.id }}</td>
+      <td>{{ producto.title }}</td>
+      <td>{{ producto.price | currency }}</td><!--Da el formato de moneda-->
+      <td>{{ producto.category }}</td>
+      <td>{{ producto.description }}</td>
+      <td><img [src]="producto.image"  width="80px"/></td>
+    </tr>
+    <tr>
+        <td colspan="5" class="table-success">Precio Total:</td>
+        <td>{{ precioTotal | currency }}</td> <!--Da el formato de moneda-->
+    </tr>
+    <tr>
+      <td colspan="5" class="table-success">Promedio Precios:</td>
+      <td>{{ PromedioPrecios | currency }}</td><!--Da el formato de moneda-->
+  </tr>
+  </tbody>
+</table>
+
+<router-outlet></router-outlet>
+
