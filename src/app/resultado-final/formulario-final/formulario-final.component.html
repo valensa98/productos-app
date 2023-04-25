@@ -8,14 +8,14 @@
         <input type="text" class="form-control" name="nota" id="nota" placeholder="Nombre de la materia # 1" /><br />
         <div *ngFor="let nota of notasformulario; let i = index">
           <label>Nota {{ i + 1 }}:</label>
-          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" /><br />
+          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" (ngModelChange)="validarRango()"/><br />
         </div>
       </div>
       <div class="col-md-6">
         <input type="text" class="form-control" placeholder="Nombre de la materia # 2" /><br />
         <div *ngFor="let nota of notasformulario; let i = index">
           <label>Nota {{ i + 1 }}:</label>
-          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" /><br />
+          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" (ngModelChange)="validarRango()" /><br />
         </div>
       </div>
     </div>
@@ -35,20 +35,14 @@
       <th>Nota Final Trimestre</th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let nombre of nombres; let i = index">
+  <tbody *ngIf="estudiantes<=15" id="tabla-estudiantes"><!--&& validarRango()==true-->
+    <tr *ngFor="let nombre of nombres; let i = index;">
       <td>{{ i + 1 }}</td>
       <td>{{ nombre }}</td>
-      <td>{{ notaMateria1[i] }}</td>
-      <td>{{ notaMateria2[i] }}</td>
-      <td>{{ notasFinales[i]}}</td>
+      <td>{{ notaMateria1[i] | number : "1.1-1" }}</td> 
+      <td>{{ notaMateria2[i] | number : "1.1-1" }}</td>
+      <td>{{ notasFinales[i] | number : "1.1-1" }}</td>
     </tr>
   </tbody>
+  
 </table>
-<!--<tr *ngFor="let nombre of nombres; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>{{ nombre }}</td>
-      <td>{{ this.notaM1 }}</td>
-      <td>{{ this.notaM2 }}</td>
-      <td>{{ this.notaFinal }}</td>
-</tr>-->
