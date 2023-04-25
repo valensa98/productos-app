@@ -13,6 +13,9 @@ enableProdMode();
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
+  titulo = 'Listado de productos';
+
+  
   productos: Producto[] = [];
   precioTotal: number = 0;
   PromedioPrecios: number = 0;

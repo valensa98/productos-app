@@ -7,16 +7,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { ProductsService } from './products.service';
 import { DataServices } from './data.service';
+import { ResultadoFinalComponent } from './resultado-final/resultado-final.component';
+import { FormularioFinalComponent } from './resultado-final/formulario-final/formulario-final.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent
+    ProductsComponent,
+    ResultadoFinalComponent,
+    FormularioFinalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [ProductsService, DataServices],
   bootstrap: [AppComponent]

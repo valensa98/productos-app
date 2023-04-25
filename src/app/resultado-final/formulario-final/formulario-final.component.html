@@ -1,0 +1,54 @@
+<section class="box">
+  <h1>{{ titulo }}</h1>
+  <form>
+    <input type="text" class="form-control" name="nombre" [(ngModel)]="nuevoNombre"
+      placeholder="Nombre del estudiante" /><br />
+    <div class="row">
+      <div class="col-md-6">
+        <input type="text" class="form-control" name="nota" id="nota" placeholder="Nombre de la materia # 1" /><br />
+        <div *ngFor="let nota of notasformulario; let i = index">
+          <label>Nota {{ i + 1 }}:</label>
+          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" /><br />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="Nombre de la materia # 2" /><br />
+        <div *ngFor="let nota of notasformulario; let i = index">
+          <label>Nota {{ i + 1 }}:</label>
+          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" /><br />
+        </div>
+      </div>
+    </div>
+    <button type="button" class="send-btn" id="calcular" (click)="MostrarInformacion()">
+      Calcular Nota Final
+    </button>
+  </form>
+</section>
+<h4>Información</h4>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Estudiante</th>
+      <th>Nota Final Materia 1</th>
+      <th>Nota Final Materia 2</th>
+      <th>Nota Final Trimestre</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let nombre of nombres; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ nombre }}</td>
+      <td>{{ notaMateria1[i] }}</td>
+      <td>{{ notaMateria2[i] }}</td>
+      <td>{{ notasFinales[i]}}</td>
+    </tr>
+  </tbody>
+</table>
+<!--<tr *ngFor="let nombre of nombres; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ nombre }}</td>
+      <td>{{ this.notaM1 }}</td>
+      <td>{{ this.notaM2 }}</td>
+      <td>{{ this.notaFinal }}</td>
+</tr>-->

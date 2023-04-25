@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductsService } from './products.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
 
 
 export class AppComponent {
-  titulo = 'Listado de productos';
+  tituloPrincipal = 'Ejercicios Angular';
+
 }
