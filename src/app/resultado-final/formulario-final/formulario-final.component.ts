@@ -31,7 +31,7 @@ export class FormularioFinalComponent {
     this.calcularMaterias(); // se calculan las notas de las materias
     this.calcularNotaFinal(); // se calcula la nota final
     this.estudiantes++;
-    console.log(this.estudiantes);
+    //console.log(this.estudiantes);
   }
 
   calcularMaterias() {
