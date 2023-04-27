@@ -10,21 +10,17 @@ import { DataServices } from './data.service';
 import { ResultadoFinalComponent } from './resultado-final/resultado-final.component';
 import { FormularioFinalComponent } from './resultado-final/formulario-final/formulario-final.component';
 import { FormsModule } from '@angular/forms';
+import { EstudianteService } from './estudiante.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     ResultadoFinalComponent,
-    FormularioFinalComponent
+    FormularioFinalComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule
-  ],
-  providers: [ProductsService, DataServices],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [ProductsService, DataServices, EstudianteService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

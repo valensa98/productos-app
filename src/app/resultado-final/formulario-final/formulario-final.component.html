@@ -5,23 +5,28 @@
       placeholder="Nombre del estudiante" /><br />
     <div class="row">
       <div class="col-md-6">
-        <input type="text" class="form-control" name="nota" id="nota" placeholder="Nombre de la materia # 1" /><br />
+        <input type="text" class="form-control" [(ngModel)]="nombreMateria1" name="nota" id="nota" placeholder="Nombre de la materia # 1" /><br />
         <div *ngFor="let nota of notasformulario; let i = index">
           <label>Nota {{ i + 1 }}:</label>
-          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" (ngModelChange)="validarRango()"/><br />
+          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" (ngModelChange)="validarRango()" id="validar_input1"/><br /><!-- (input)="validarInput()"-->
         </div>
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control" placeholder="Nombre de la materia # 2" /><br />
+        <input type="text" class="form-control" [(ngModel)]="nombreMateria2" placeholder="Nombre de la materia # 2" /><br />
         <div *ngFor="let nota of notasformulario; let i = index">
           <label>Nota {{ i + 1 }}:</label>
-          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" (ngModelChange)="validarRango()" /><br />
+          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" (ngModelChange)="validarRango()"  id="validar_input2" /><br /> <!-- (input)="validarInput()"-->
         </div>
       </div>
     </div>
-    <button type="button" class="send-btn" id="calcular" (click)="MostrarInformacion()">
-      Calcular Nota Final
-    </button>
+    <div class="button-container">
+      <button type="button" class="send-btn"  id="btn_Validar" (click)="MostrarInformacion()" >
+        Calcular Nota Final
+      </button>
+      <button type="button" class="send-btn" id="calcular" (click)="ListarEstudiantes()">
+        Listar Estudiantes
+      </button>
+    </div>
   </form>
 </section>
 <h4>Información</h4>
@@ -35,7 +40,7 @@
       <th>Nota Final Trimestre</th>
     </tr>
   </thead>
-  <tbody *ngIf="estudiantes<=15" id="tabla-estudiantes"><!--&& validarRango()==true-->
+  <tbody *ngIf="estudiantes<=3" id="tabla-estudiantes">
     <tr *ngFor="let nombre of nombres; let i = index;">
       <td>{{ i + 1 }}</td>
       <td>{{ nombre }}</td>

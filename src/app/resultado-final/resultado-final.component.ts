@@ -13,11 +13,10 @@ export class ResultadoFinalComponent {
     private router: Router
   ) { }
 
-  solucion(){
-    
+  /*solucion(){
     //agregamos un nuevo elemento
     this.router.navigate(['productos/solucion']);
-  }
+  }*/
 
   
 
