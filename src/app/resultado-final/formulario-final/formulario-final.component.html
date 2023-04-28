@@ -1,26 +1,25 @@
 <section class="box">
   <h1>{{ titulo }}</h1>
   <form>
-    <input type="text" class="form-control" name="nombre" [(ngModel)]="nuevoNombre"
-      placeholder="Nombre del estudiante" /><br />
+    <input type="text" class="form-control" name="nombre" [(ngModel)]="nuevoNombre"placeholder="Nombre del estudiante" id="validar_nombre" (input)="validarInput()"/><br />
     <div class="row">
       <div class="col-md-6">
-        <input type="text" class="form-control" [(ngModel)]="nombreMateria1" name="nota" id="nota" placeholder="Nombre de la materia # 1" /><br />
+        <input type="text" class="form-control" [(ngModel)]="nombreMateria1" name="nota" id="nota" placeholder="Nombre de la materia # 1"  id="validar_materia1" (input)="validarInput()"/><br  />
         <div *ngFor="let nota of notasformulario; let i = index">
           <label>Nota {{ i + 1 }}:</label>
-          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" (ngModelChange)="validarRango()" id="validar_input1"/><br /><!-- (input)="validarInput()"-->
+          <input type="number" class="form-control" [(ngModel)]="notasM1[i]" (ngModelChange)="validarRango()" id="validar_input1" (input)="validarInput()" /><br />
         </div>
       </div>
       <div class="col-md-6">
-        <input type="text" class="form-control" [(ngModel)]="nombreMateria2" placeholder="Nombre de la materia # 2" /><br />
+        <input type="text" class="form-control" [(ngModel)]="nombreMateria2" placeholder="Nombre de la materia # 2" id="validar_materia2" (input)="validarInput()" /><br />
         <div *ngFor="let nota of notasformulario; let i = index">
           <label>Nota {{ i + 1 }}:</label>
-          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" (ngModelChange)="validarRango()"  id="validar_input2" /><br /> <!-- (input)="validarInput()"-->
+          <input type="number" class="form-control" [(ngModel)]="notasM2[i]" (ngModelChange)="validarRango()"  id="validar_input2" (input)="validarInput()" /><br />
         </div>
       </div>
     </div>
     <div class="button-container">
-      <button type="button" class="send-btn"  id="btn_Validar" (click)="MostrarInformacion()" >
+      <button type="button" class="send-btn"  id="btn_Validar" (click)="MostrarInformacion()" disabled >
         Calcular Nota Final
       </button>
       <button type="button" class="send-btn" id="calcular" (click)="ListarEstudiantes()">
@@ -40,7 +39,7 @@
       <th>Nota Final Trimestre</th>
     </tr>
   </thead>
-  <tbody *ngIf="estudiantes<=3" id="tabla-estudiantes">
+  <tbody *ngIf="estudiantes<=15" id="tabla-estudiantes">
     <tr *ngFor="let nombre of nombres; let i = index;">
       <td>{{ i + 1 }}</td>
       <td>{{ nombre }}</td>
@@ -51,3 +50,4 @@
   </tbody>
   
 </table>
+

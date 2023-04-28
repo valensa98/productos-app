@@ -15,7 +15,4 @@ export class EstudianteService {
 }
 
 
-  //devuelve el resultado del metodo cargar personas
-  /* obtenerEstudiantes() {
-    return this.dataServices.cargarEstudiantes();
-  }*/
+

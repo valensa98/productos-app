@@ -31,17 +31,34 @@ export class FormularioFinalComponent {
     private router: Router,
     private estudianteService: EstudianteService,
     private route: ActivatedRoute
-  ) {} //se agrega el servicio en el constructor
+  ) { } //se agrega el servicio en el constructor
 
   @Output() ResultadoNota = new EventEmitter<number>(); // Este funcionará cuando el usuario haga clic en el botón "Calcular Nota Final"
 
-  /*validarInput(): void {
-  const btnValidar = document.getElementById("btn_Validar") as HTMLButtonElement; //obtiene el valor del botón por medio del id
-    const inputValidar1 = document.getElementById("validar_input1") as HTMLInputElement;//obtiene el valor del input por medio del id
-    const inputValidar2 = document.getElementById("validar_input2") as HTMLInputElement;//obtiene el valor del input por medio del id
-    btnValidar.disabled = !(inputValidar1.value.length && inputValidar2.value.length); //evalua la longitud del input y asigna true o false al disable
-  
-  }*/
+  validarInput(): void {
+    const btnValidar = document.getElementById("btn_Validar") as HTMLButtonElement; //obtiene el valor del botón por medio del id
+    const inputNombre = document.getElementById("validar_nombre") as HTMLInputElement;//obtiene el valor del input por medio del id
+    const inputMateria1 = document.getElementById("validar_materia1") as HTMLInputElement;//obtiene el valor del input por medio del id
+    const inputMateria2 = document.getElementById("validar_materia2") as HTMLInputElement;//obtiene el valor del input por medio del id
+
+    const notasM1 = Array.from(document.querySelectorAll('#validar_input1'));
+    const notasM2 = Array.from(document.querySelectorAll('#validar_input2'));
+
+
+    const CamposCompletos = inputNombre.value.length && inputMateria1.value.length &&
+    inputMateria2.value.length && notasM1.length && notasM2.length; //verifica si ambos campos tienen datos
+
+
+    btnValidar.disabled = !CamposCompletos;
+    //habilita o deshabilita el botón si ambos campos tienen datos
+  }
+
+  /*const inputValidar1 = document.getElementById("validar_input1") as HTMLInputElement;//obtiene el valor del input por medio del id
+ const inputValidar2 = document.getElementById("validar_input2") as HTMLInputElement;//obtiene el valor del input por medio del id
+ */
+
+
+
 
   MostrarInformacion() {
     this.nombres.push(this.nuevoNombre); //agrega el estudiante a la lista de nombres
@@ -52,16 +69,16 @@ export class FormularioFinalComponent {
   }
 
   GuardarInformacion() {
-    if (this.registrosGuardados < 3) {
+    if (this.registrosGuardados < 15) {
       this.estudianteService.agregarEstudiante(
         new Estudiante(
-          this.nuevoNombre,this.nombreMateria1,this.nombreMateria2,this.notasM1,
-          this.notasM2,this.notaM1,this.notaM2,this.notaFinal
+          this.nuevoNombre, this.nombreMateria1, this.nombreMateria2, this.notasM1,
+          this.notasM2, this.notaM1, this.notaM2, this.notaFinal
         ));
       alert('El registro se almaceno con exito');
       this.registrosGuardados++;
       console.log(this.registrosGuardados)
-      if (this.registrosGuardados === 3) {
+      if (this.registrosGuardados === 15) {
         alert('Todos los registros se ingresaron exitosamente');
       }
     } else {
